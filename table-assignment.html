@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Row Assignment</title>
+  <style>
+    /* Style the table and cells with borders and spacing */
+    table, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Add space between buttons */
+    button {
+      margin: 10px 5px;
+    }
+
+    /* Style for the message below the buttons */
+    #message {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    Author: Austin W. Davis
+    Description: This file creates a dynamic HTML table where users can insert or delete rows.
+    - Insert row adds a row to the bottom.
+    - Delete row removes a row from the top.
+    - Displays a message when there are no rows left.
+  -->
+
+  <!-- Initial table with 5 rows, each with 2 columns -->
+  <table id="myTable">
+    <tr><td>Row1 Col1</td><td>Row1 Col2</td></tr>
+    <tr><td>Row2 Col1</td><td>Row2 Col2</td></tr>
+    <tr><td>Row3 Col1</td><td>Row3 Col2</td></tr>
+    <tr><td>Row4 Col1</td><td>Row4 Col2</td></tr>
+    <tr><td>Row5 Col1</td><td>Row5 Col2</td></tr>
+  </table>
+
+  <!-- Buttons to control row actions -->
+  <br>
+  <button onclick="insertRow()">Insert row</button> <!-- Adds row at bottom -->
+  <button onclick="deleteRow()">delete row</button> <!-- Deletes row from top -->
+
+  <!-- Message label to give feedback -->
+  <div id="message">Message:</div>
+
+  <script>
+    // Track how many rows have been added in total
+    let rowCount = 5; // We start with 5 rows already present
+
+    // Function to add a new row to the bottom of the table
+    function insertRow() {
+      rowCount++; // Increase the row number
+
+      const table = document.getElementById("myTable"); // Get reference to table
+      const newRow = table.insertRow(); // Add row at the end
+      const cell1 = newRow.insertCell(0); // First column
+      const cell2 = newRow.insertCell(1); // Second column
+
+      // Populate new row with updated row number
+      cell1.innerText = `Row${rowCount} Col1`;
+      cell2.innerText = `Row${rowCount} Col2`;
+
+      // Clear the message in case it said "No more rows to delete"
+      document.getElementById("message").innerText = "Message:";
+    }
+
+    // Function to delete the first (top) row in the table
+    function deleteRow() {
+      const table = document.getElementById("myTable"); // Reference to table
+
+      if (table.rows.length > 0) {
+        table.deleteRow(0); // Remove the first row (index 0)
+
+        // If the table is now empty, show a warning message
+        if (table.rows.length === 0) {
+          document.getElementById("message").innerText = "Message: No more rows to delete";
+        }
+      } else {
+        // If no rows are left to delete, show the same message
+        document.getElementById("message").innerText = "Message: No more rows to delete";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
