@@ -36,7 +36,7 @@ This project demonstrates basic HTML, CSS, and JavaScript to dynamically insert 
 ## 💡 Sources
 
 - All HTML, CSS, and JavaScript were written by me.
-- Guidance and clarification were received through educational support conversations (e.g., ChatGPT).
+- Guidance and clarification were received through educational support conversations (e.g., ChatGPT and Google).
 - No external libraries or starter code were used.
 
 ## 👤 Author
